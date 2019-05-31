@@ -4,7 +4,7 @@ orbs:
   win: sandbox/windows-tools@dev:preview
 
 workflows:
-  workflow:
+  build:
     jobs:
       - build
 
