@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  win: sandbox/windows-tools@dev:preview
+
+workflows:
+  workflow:
+    jobs:
+      - build
+
+jobs:
+    build:
+        executor: win/preview-default
+        steps:
+            - checkout
+            - run:
+                name: Restore packages
+                command: |
+                    dotnet restore
+            - run:
+                name: Build TestingFrameworkApp
+                command: dotnet build --configuration Release
+            - persist_to_workspace:
+                root: ~/
+                paths:
+                    - .nuget
+                    - app
