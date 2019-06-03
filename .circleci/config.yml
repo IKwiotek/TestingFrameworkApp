@@ -22,7 +22,7 @@ jobs:
             - run:
                 name: install script
                 command: |
-                    dotnet-install.ps1
+                    .\dotnet-install.ps1
                     R
                 shell: powershell.exe
             #- run: 
