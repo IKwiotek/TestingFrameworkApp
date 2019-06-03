@@ -10,15 +10,18 @@ workflows:
 
 jobs:
     build:
-        executor: win/preview-default
+        #executor: win/preview-default
+        docker:
+            - image: mcr.microsoft.com/dotnet/framework/sdk:4.8
         steps:
             - checkout
-            - run:
-                name: Install DotNet
-                command: dotnet-install.ps1
+            #- run:
+            #    name: Install DotNet
+            #    command: dotnet-install.ps1
             - run:
                 name: Restore packages
                 command: dotnet restore
+                shell: cmd.exe
             - run:
                 name: Build TestingFrameworkApp
                 command: dotnet build --configuration Release
