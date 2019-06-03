@@ -19,9 +19,15 @@ jobs:
                 name: dir
                 command: dir
                 shell: cmd.exe
-            - run: 
-                name: install framework
-                command: choco install netfx-4.8-devpack --pre
+            - run:
+                name: install script
+                command: |
+                    dotnet-install.ps1
+                    R
+                shell: powershell.exe
+            #- run: 
+            #    name: install framework
+            #    command: choco install netfx-4.8-devpack --pre
             #- run:
             #    name: Install DotNet
             #    command: dotnet-install.ps1
