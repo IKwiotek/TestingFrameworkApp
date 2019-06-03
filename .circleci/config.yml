@@ -21,9 +21,7 @@ jobs:
                 shell: cmd.exe
             - run:
                 name: install script
-                command: |
-                    .\dotnet-install.ps1
-                    R
+                command: .\dotnet-install.ps1
                 shell: powershell.exe
             #- run: 
             #    name: install framework
