@@ -31,7 +31,9 @@ jobs:
             #    command: dotnet-install.ps1
             - run:
                 name: Restore packages
-                command: dotnet restore
+                command: |
+                    echo "$env:PATH"
+                    dotnet restore
                 shell: powershell.exe
             - run:
                 name: Build TestingFrameworkApp
