@@ -21,7 +21,9 @@ jobs:
                 shell: cmd.exe
             - run:
                 name: install script
-                command: .\dotnet-install.ps1
+                command: |
+                    .\dotnet-install.ps1
+                    echo "$env:PATH"
                 shell: powershell.exe
             #- run: 
             #    name: install framework
