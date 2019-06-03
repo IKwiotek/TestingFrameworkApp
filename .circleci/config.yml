@@ -32,7 +32,7 @@ jobs:
             - run:
                 name: Restore packages
                 command: dotnet restore
-                shell: cmd.exe
+                shell: powershell.exe
             - run:
                 name: Build TestingFrameworkApp
                 command: dotnet build --configuration Release
