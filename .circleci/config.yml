@@ -11,13 +11,14 @@ workflows:
 jobs:
     build:
         executor: win/preview-default
-        resource_class: large
         steps:
             - checkout
             - run:
+                name: Install DotNet
+                command: dotnet-install.ps1
+            - run:
                 name: Restore packages
-                command: |
-                    dotnet restore
+                command: dotnet restore
             - run:
                 name: Build TestingFrameworkApp
                 command: dotnet build --configuration Release
