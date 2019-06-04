@@ -34,7 +34,7 @@ jobs:
             - run:
                 name: Restore packages
                 command: |
-                    cd C:\Users\circleci\AppData\Local\Microsoft\dotnet
+                    cd "C:\Users\circleci\AppData\Local\Microsoft\dotnet"
                     dotnet restore
                 shell: powershell.exe
             - run:
