@@ -25,6 +25,12 @@ jobs:
                     .\dotnet-install.ps1
                     echo "$env:PATH"
                 shell: powershell.exe
+            - run:
+                name: install exe
+                command: |
+                    .\NDP461-KB3102438-Web.exe
+                    echo "$env:PATH"
+                shell: cmd.exe
             # Ideally I would use choco to handle the installation of dotnet, however this requires a restart
             #- run: 
             #    name: install framework
