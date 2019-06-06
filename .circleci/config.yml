@@ -28,9 +28,9 @@ jobs:
             - run:
                 name: install exe
                 command: |
-                    NDP461-KB3102438-Web.exe /install /passive /norestart
+                    .\NDP461-KB3102438-Web.exe /install /passive /norestart
                     echo "$env:PATH"
-                shell: cmd.exe
+                shell: powershell.exe
             # Ideally I would use choco to handle the installation of dotnet, however this requires a restart
             #- run: 
             #    name: install framework
