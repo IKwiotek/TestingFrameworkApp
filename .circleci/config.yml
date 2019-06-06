@@ -28,7 +28,7 @@ jobs:
             - run:
                 name: install exe
                 command: |
-                    start NDP461-KB3102438-Web.exe
+                    NDP461-KB3102438-Web.exe /install /passive /norestart
                     echo "$env:PATH"
                 shell: cmd.exe
             # Ideally I would use choco to handle the installation of dotnet, however this requires a restart
