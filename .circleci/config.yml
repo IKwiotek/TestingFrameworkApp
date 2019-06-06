@@ -45,7 +45,9 @@ jobs:
                 name: Build TestingFrameworkApp
                 environment:
                     - PATH: "C:\\Users\\circleci\\AppData\\Local\\Microsoft\\dotnet;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0;C:\\Windows\\System32\\OpenSSH;C:\\ProgramData\\GooGet;C:\\Program Files\\Google\\Compute Engine\\metadata_scripts;C:\\Program Files (x86)\\Google\\Cloud SDK\\google-cloud-sdk\\bin;C:\\Program Files\\Google\\Compute Engine\\sysprep;C:\\ProgramData\\Chocolatey\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git LFS;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\circleci\\AppData\\Local\\Microsoft\\WindowsApps"
-                command: dotnet build --configuration Release
+                command: |
+                    .\NDP461-KB3102438-Web.exe /install /passive /norestart
+                    dotnet build --configuration Release
             - persist_to_workspace:
                 root: ~/
                 paths:
