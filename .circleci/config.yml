@@ -75,6 +75,7 @@ jobs:
                     dotnet restore
                 shell: powershell.exe
             #Build Solution
+            - run:
                 name: Dotnet Build
                 command: |
                     dotnet build --configuration Release
