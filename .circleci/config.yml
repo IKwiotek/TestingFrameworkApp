@@ -18,28 +18,28 @@ jobs:
         executor: win/preview-default
         steps:
             - checkout
-        # Install .NET 4.8
+            # Install .NET 4.8
             - run:
-                name: Install .NET 4.8
+                name: install exe
                 command: |
                     "Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" -OutFile dotnet-framework-installer.exe"
                     ".\\dotnet-framework-installer.exe /q"
                 shell: powershell.exe
-        # Install NuGet
+            # Install NuGet
             - run:
                 name: Install NuGet
                 command: |
                     "New-Item -Type Directory $Env:ProgramFiles\\NuGet;"
                     "Invoke-WebRequest -UseBasicParsing https://dist.nuget.org/win-x86-commandline/v$Env:NUGET_VERSION/nuget.exe -OutFile $Env:ProgramFiles\\NuGet\\nuget.exe"
                 shell: powershell.exe
-        # Install VS Test Agent
+            # Install VS Test Agent
             - run:
                 name: Install VS Test Agent
                 command: |
                     "Invoke-WebRequest -UseBasicParsing https://download.visualstudio.microsoft.com/download/pr/4eef3cca-9da8-417a-889f-53212671e83b/50a7f7a24b21910a7cbe093fa150fd31/vs_testagent.exe -OutFile vs_TestAgent.exe;"
                     "Start-Process vs_TestAgent.exe -ArgumentList '--quiet', '--norestart', '--nocache' -NoNewWindow -Wait;"
                 shell: powershell.exe
- # Install VS Build Tools
+            # Install VS Build Tools
             - run:
                 name: Install VS Build Tools
                 command: |
@@ -71,9 +71,11 @@ jobs:
             # Restore Packages
             - run:
                 name: Restore packages
-                command: dotnet restore
+                command: |
+                    dotnet restore
                 shell: powershell.exe
             #Build Solution
                 name: Dotnet Build
-                command: dotnet build --configuration Release
+                command: |
+                    dotnet build --configuration Release
                 shell: powershell.exe
