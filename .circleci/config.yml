@@ -22,9 +22,9 @@ jobs:
             - run:
                 name: install exe
                 command: |
-                     Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" -OutFile dotnet-framework-installer.exe
+                     $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" -OutFile dotnet-framework-installer.exe
                      .\dotnet-framework-installer.exe /q
-                shell: powershell $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue';
+                shell: powershell
             # Install NuGet
             - run:
                 name: Install NuGet
