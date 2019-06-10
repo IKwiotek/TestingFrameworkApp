@@ -29,8 +29,8 @@ jobs:
             - run:
                 name: Install NuGet
                 command: |
-                    New-Item -Type Directory $Env:ProgramFiles\\NuGet;
-                    Invoke-WebRequest -UseBasicParsing "https://dist.nuget.org/win-x86-commandline/v4.8.2/nuget.exe" -OutFile $Env:ProgramFiles\NuGet\nuget.exe
+                    "New-Item -Type Directory $Env:ProgramFiles\\NuGet;"
+                    "Invoke-WebRequest -UseBasicParsing https://dist.nuget.org/win-x86-commandline/v$Env:NUGET_VERSION/nuget.exe -OutFile $Env:ProgramFiles\\NuGet\\nuget.exe"
                 shell: powershell.exe
             # Install VS Test Agent
             - run:
