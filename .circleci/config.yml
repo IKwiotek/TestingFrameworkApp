@@ -71,6 +71,9 @@ jobs:
             - run:
                 name: Check x86 Directory
                 command: |
+                    dir
+                    cd "C:"
+                    dir
                     cd "C:\\Program Files (x86)"
                     dir
                     cd "C:\\Program Files (x86)\\Microsoft Visual Studio"
