@@ -20,7 +20,11 @@ jobs:
             - checkout
             - run:
                 name: Directory View
-                command: dir
+                command:|
+                    dir
+                    cd ~
+                    dir
+
                 shell: powershell.exe
             # Install .NET 4.8
         #    - run:
