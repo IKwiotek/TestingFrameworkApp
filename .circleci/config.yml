@@ -68,6 +68,7 @@ jobs:
                     Start-Process msiexec -ArgumentList '/i', 'sdk_tools48\\sdk_tools48.msi', '/quiet', 'VSEXTUI=1' -NoNewWindow -Wait;
                 shell: powershell.exe
             # Check Directory
+            - run:
                 name: Check x86 Directory
                 command: |
                     cd "C:\\Program Files (x86)"
