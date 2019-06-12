@@ -18,6 +18,10 @@ jobs:
         executor: win/preview-default
         steps:
             - checkout
+            - run:
+                name: Directory View
+                command: dir
+                shell: powershell.exe
             # Install .NET 4.8
         #    - run:
         #        name: install exe
@@ -31,7 +35,7 @@ jobs:
                 command: |
                     "New-Item -Type Directory $Env:ProgramFiles\\NuGet;"
                     "Invoke-WebRequest -UseBasicParsing https://dist.nuget.org/win-x86-commandline/v$Env:NUGET_VERSION/nuget.exe -OutFile $Env:ProgramFiles\\NuGet\\nuget.exe"
-                shell: powershell
+                shell: powershell.exe
             # Install VS Test Agent
             - run:
                 name: Install VS Test Agent
@@ -59,14 +63,15 @@ jobs:
             - run:
                 name: Install web targets
                 command: |
-                    $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/dockerassets/MSBuild.Microsoft.VisualStudio.Web.targets.2019.05.zip" -OutFile MSBuild.Microsoft.VisualStudio.Web.targets.zip;
-                    Expand-Archive MSBuild.Microsoft.VisualStudio.Web.targets.2019.05.zip -DestinationPath \\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\";
+                    "Invoke-WebRequest -UseBasicParsing https://dotnetbinaries.blob.core.windows.net/dockerassets/MSBuild.Microsoft.VisualStudio.Web.targets.2019.05.zip -OutFile MSBuild.Microsoft.VisualStudio.Web.targets.zip;"
+                    "Expand-Archive MSBuild.Microsoft.VisualStudio.Web.targets.zip -DestinationPath \\"${Env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\";"
                 shell: powershell.exe
             # Install Targeting Packs
             - run:
                 name: Install Targeting Packs
                 command: |
-                    $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v4.6.2.zip" -OutFile referenceassemblies.zip;
+                    "@('4.0', '4.5.2', '4.6.2', '4.7.2', '4.8') | %{ Invoke-WebRequest -UseBasicParsing https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v${_}.zip -OutFile referenceassemblies.zip; Expand-Archive referenceassemblies.zip -DestinationPath \\"${Env:ProgramFiles(x86)}\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip; }"
+            #        $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v4.6.2.zip" -OutFile referenceassemblies.zip;
             #        Expand-Archive referenceassemblies.zip -DestinationPath \\"C:\\Program Files (x86)\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip;
             #       "@('4.0', '4.5.2', '4.6.2', '4.7.2', '4.8') | %{ $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/4.6.2.zip" -OutFile referenceassemblies.zip; Expand-Archive referenceassemblies.zip -DestinationPath \\"${Env:ProgramFiles(x86)}\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip; }"
                 shell: powershell.exe
