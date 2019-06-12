@@ -72,7 +72,7 @@ jobs:
                 name: Install web targets
                 command: |
                     "Invoke-WebRequest -UseBasicParsing https://dotnetbinaries.blob.core.windows.net/dockerassets/MSBuild.Microsoft.VisualStudio.Web.targets.2019.05.zip -OutFile MSBuild.Microsoft.VisualStudio.Web.targets.zip;"
-                    "Expand-Archive MSBuild.Microsoft.VisualStudio.Web.targets.zip -DestinationPath \\"${Env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\";"
+                    "Expand-Archive MSBuild.Microsoft.VisualStudio.Web.targets.zip -DestinationPath \\"${Env:Program Files (x86)}\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\";"
                 shell: powershell.exe
             # Install Targeting Packs
             - run:
