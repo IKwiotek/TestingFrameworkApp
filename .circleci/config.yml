@@ -22,7 +22,11 @@ jobs:
                 name: Directory View
                 command: |
                     dir
-                    cd ~
+                    cd ..
+                    dir
+                    cd ..
+                    dir
+                    cd ..
                     dir
 
                 shell: powershell.exe
