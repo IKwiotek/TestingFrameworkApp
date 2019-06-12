@@ -56,12 +56,12 @@ jobs:
                     Start-Process msiexec -ArgumentList '/i', 'sdk_tools48\\sdk_tools48.msi', '/quiet', 'VSEXTUI=1' -NoNewWindow -Wait;
                 shell: powershell.exe
             # Install web targets
-        #    - run:
-        #        name: Install web targets
-        #        command: |
-        #            $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/dockerassets/MSBuild.Microsoft.VisualStudio.Web.targets.2019.05.zip" -OutFile MSBuild.Microsoft.VisualStudio.Web.targets.zip;
-        #            Expand-Archive MSBuild.Microsoft.VisualStudio.Web.targets.zip -DestinationPath \\"${Env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\";
-        #        shell: powershell.exe
+            - run:
+                name: Install web targets
+                command: |
+                    $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/dockerassets/MSBuild.Microsoft.VisualStudio.Web.targets.2019.05.zip" -OutFile MSBuild.Microsoft.VisualStudio.Web.targets.zip;
+                    Expand-Archive MSBuild.Microsoft.VisualStudio.Web.targets.zip -DestinationPath \\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\";
+                shell: powershell.exe
             # Install Targeting Packs
             - run:
                 name: Install Targeting Packs
