@@ -78,21 +78,19 @@ jobs:
                     dir
                     cd "C:\\Program Files (x86)\\Microsoft Visual Studio"
                     dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio"
+                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019"
                     dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio\\2019"
+                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools"
                     dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio\\2019\\BuildTools"
+                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild"
                     dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild"
+                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft"
                     dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft"
+                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio"
                     dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio"
+                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0"
                     dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\"
+                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\"
                     dir
                 shell: powershell.exe
             # Install web targets
