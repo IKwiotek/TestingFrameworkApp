@@ -20,7 +20,7 @@ jobs:
             - checkout
             - run:
                 name: Directory View
-                command:|
+                command: |
                     dir
                     cd ~
                     dir
