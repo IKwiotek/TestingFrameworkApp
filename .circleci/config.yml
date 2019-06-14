@@ -18,25 +18,13 @@ jobs:
         executor: win/preview-default
         steps:
             - checkout
-            - run:
-                name: Directory View
-                command: |
-                    dir
-                    cd ..
-                    dir
-                    cd ..
-                    dir
-                    cd ..
-                    dir
-
-                shell: powershell.exe
             # Install .NET 4.8
-        #    - run:
-        #        name: install exe
-        #        command: |
-        #             $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" -OutFile dotnet-framework-installer.exe
-        #             .\dotnet-framework-installer.exe /q
-        #        shell: powershell.exe
+            - run:
+                name: install exe
+                command: |
+                    $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" -OutFile dotnet-framework-installer.exe;
+                    .\dotnet-framework-installer.exe /q;
+                shell: powershell.exe
             # Install NuGet
             - run:
                 name: Install NuGet
@@ -66,32 +54,6 @@ jobs:
                     $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/dockerassets/sdk_tools48.zip" -OutFile sdk_tools48.zip;
                     Expand-Archive sdk_tools48.zip;
                     Start-Process msiexec -ArgumentList '/i', 'sdk_tools48\\sdk_tools48.msi', '/quiet', 'VSEXTUI=1' -NoNewWindow -Wait;
-                shell: powershell.exe
-            # Check Directory
-            - run:
-                name: Check x86 Directory
-                command: |
-                    dir
-                    cd "C:"
-                    dir
-                    cd "C:\\Program Files (x86)"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0"
-                    dir
-                    cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Microsoft\\VisualStudio\\v16.0\\"
-                    dir
                 shell: powershell.exe
             # Install web targets
             - run:
