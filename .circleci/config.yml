@@ -104,7 +104,9 @@ jobs:
             - run:
                 name: Install Targeting Packs
                 command: |
-                    "@('4.0', '4.5.2', '4.6.2', '4.7.2', '4.8') | %{ $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v${_}.zip -OutFile referenceassemblies.zip; Expand-Archive referenceassemblies.zip -DestinationPath "${Env:ProgramFiles(x86)}\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip; }"
+                    $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v4.6.2.zip" -OutFile referenceassemblies.zip;
+                    Expand-Archive referenceassemblies.zip -DestinationPath "${Env:ProgramFiles(x86)}\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\";
+                    Remove-Item -Force referenceassemblies.zip;
             #        $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v4.6.2.zip" -OutFile referenceassemblies.zip;
             #        Expand-Archive referenceassemblies.zip -DestinationPath \\"C:\\Program Files (x86)\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip;
             #       "@('4.0', '4.5.2', '4.6.2', '4.7.2', '4.8') | %{ $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/4.6.2.zip" -OutFile referenceassemblies.zip; Expand-Archive referenceassemblies.zip -DestinationPath \\"${Env:ProgramFiles(x86)}\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip; }"
