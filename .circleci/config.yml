@@ -18,13 +18,6 @@ jobs:
         executor: win/preview-default
         steps:
             - checkout
-            # Install .NET 4.8
-            - run:
-                name: install exe
-                command: |
-                    $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" -OutFile dotnet-framework-installer.exe;
-                    .\dotnet-framework-installer.exe /q;
-                shell: powershell.exe
             # Install NuGet
             - run:
                 name: Install NuGet
@@ -72,6 +65,13 @@ jobs:
             #        $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v4.6.2.zip" -OutFile referenceassemblies.zip;
             #        Expand-Archive referenceassemblies.zip -DestinationPath \\"C:\\Program Files (x86)\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip;
             #       "@('4.0', '4.5.2', '4.6.2', '4.7.2', '4.8') | %{ $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -UseBasicParsing "https://dotnetbinaries.blob.core.windows.net/referenceassemblies/4.6.2.zip" -OutFile referenceassemblies.zip; Expand-Archive referenceassemblies.zip -DestinationPath \\"${Env:ProgramFiles(x86)}\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\"; Remove-Item -Force referenceassemblies.zip; }"
+                shell: powershell.exe
+            # Install .NET 4.8
+            - run:
+                name: Install .NET 4.8
+                command: |
+                    $erroractionpreference = 'Stop'; $progresspreference = 'SilentlyContinue'; Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" -OutFile dotnet-framework-installer.exe;
+                    .\dotnet-framework-installer.exe /q;
                 shell: powershell.exe
             # Restore Packages
             - run:
